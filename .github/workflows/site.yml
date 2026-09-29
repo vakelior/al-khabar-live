@@ -26,24 +26,16 @@ jobs:
       - name: open public link
         run: |
           echo "Opening public link (works in browser)..."
-          sshpass -p '' ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R 80:localhost:8080 serveo.net > /tmp/serveo.log 2>&1 &
-          for i in $(seq 1 30); do
-            URL=$(grep -oE 'https?://[0-9a-zA-Z]+\.serveo\.net' /tmp/serveo.log | head -n1)
-            [ -n "$URL" ] && break
-            sleep 3
-          done
-          echo "URL=$URL" >> "$GITHUB_STEP_SUMMARY"
-          echo "FULL_URL=$URL" >> "$GITHUB_OUTPUT"
+          sshpass -p '' ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R al-khabar-live:80:localhost:8080 serveo.net > /tmp/serveo.log 2>&1 &
+          sleep 15
           echo "=========================================="
           echo "LIVE SITE CONNECTION INFO"
           echo "=========================================="
-          if [ -n "$URL" ]; then
-            echo "URL : $URL"
-          else
-            echo "URL : (waiting) — checking again..."
-            cat /tmp/serveo.log
-          fi
+          echo "URL : http://al-khabar-live.serveo.net"
           echo "=========================================="
+          echo ""
+          echo "serveo log (if any):"
+          cat /tmp/serveo.log
 
       - name: keep alive
         run: |

@@ -36,4 +36,4 @@ jobs:
 
       - name: keep alive
         run: |
-          for i in $(seq 1 350); do sleep 60; done
+          for i in $(seq 1 4); do sleep 60; done

@@ -32,19 +32,11 @@ jobs:
             [ -n "$URL" ] && break
             sleep 3
           done
-          echo "URL=$URL" >> "$GITHUB_ENV"
-          echo "FINAL_URL=$URL" >> "$GITHUB_STEP_SUMMARY"
-          echo "::notice::LIVE SITE URL: $URL"
-          echo "===================================================="
-          echo "LIVE SITE CONNECTION INFO"
-          echo "===================================================="
           echo "URL : $URL"
           if [ -z "$URL" ]; then
-            echo "(no URL yet) serveo log:"
             cat /tmp/serveo.log
           fi
-          echo "===================================================="
 
       - name: keep alive
         run: |
-          for i in $(seq 1 350); do sleep 60; done
+          for i in $(seq 1 3); do sleep 60; done

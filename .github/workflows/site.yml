@@ -32,6 +32,8 @@ jobs:
             [ -n "$URL" ] && break
             sleep 3
           done
+          echo "URL=$URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "FULL_URL=$URL" >> "$GITHUB_OUTPUT"
           echo "=========================================="
           echo "LIVE SITE CONNECTION INFO"
           echo "=========================================="

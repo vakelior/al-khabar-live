@@ -1,0 +1,48 @@
+name: live-site
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *'
+
+jobs:
+  serve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: install server
+        run: |
+          sudo apt update -y
+          sudo apt install -y curl sshpass
+
+      - name: start http server
+        run: |
+          cd site
+          nohup python3 -m http.server 8080 > /tmp/http.log 2>&1 &
+          echo "http server started on port 8080"
+
+      - name: open public link
+        run: |
+          echo "Opening public link (works in browser)..."
+          sshpass -p '' ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R 80:localhost:8080 serveo.net > /tmp/serveo.log 2>&1 &
+          for i in $(seq 1 30); do
+            URL=$(grep -oE 'https?://[0-9a-zA-Z]+\.serveo\.net' /tmp/serveo.log | head -n1)
+            [ -n "$URL" ] && break
+            sleep 3
+          done
+          echo "=========================================="
+          echo "LIVE SITE CONNECTION INFO"
+          echo "=========================================="
+          if [ -n "$URL" ]; then
+            echo "URL : $URL"
+          else
+            echo "URL : (waiting) — checking again..."
+            cat /tmp/serveo.log
+          fi
+          echo "=========================================="
+
+      - name: keep alive
+        run: |
+          for i in $(seq 1 350); do sleep 60; done

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0d0d">
+<title>الخبر اليوم | منصة الأخبار الرائدة</title>
+<meta name="description" content="الخبر اليوم — منصة إخبارية رقمية تقدم الأخبار والتقارير والفيديوهات على مدار الساعة. اشترك الآن ليصلك جديدنا أولاً بأول.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d0d;--surface:#151515;--surface2:#1e1e1e;--text:#f4f4f4;--muted:#9a9a9a;--line:rgba(255,255,255,.08);--accent:#e11d2e;--accent2:#ff3b4e;--grad:linear-gradient(135deg,#e11d2e,#ff5b3d);--max:1180px;--radius:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+header{position:fixed;top:0;right:0;left:0;z-index:100;transition:.3s;padding:18px 0}
+header.scrolled{background:rgba(13,13,13,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:24px}
+.logo-mark{width:42px;height:42px;border-radius:12px;background:var(--grad);display:grid;place-items:center;font-size:20px;color:#fff;box-shadow:0 8px 24px rgba(225,29,46,.35)}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14px;font-weight:700;color:#ddd;padding:8px 14px;border-radius:10px;transition:.2s}
+.nav-links a:hover{color:#fff;background:var(--surface2)}
+.nav-links a.cta{color:#fff;padding:10px 20px;border-radius:12px;background:var(--grad);box-shadow:0 8px 24px rgba(225,29,46,.3)}
+.nav-links a.cta:hover{transform:translateY(-2px);background:var(--accent2)}
+.hero{position:relative;padding:180px 0 110px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 15% 20%,rgba(225,29,46,.18),transparent 42%),radial-gradient(circle at 85% 60%,rgba(255,91,61,.12),transparent 40%),var(--bg)}
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px}
+.hero-grid{position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--line);padding:7px 15px;border-radius:100px;font-size:13px;font-weight:700;color:#ddd}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 5px rgba(255,59,78,.15)}
+.hero h1{font-size:clamp(34px,6vw,64px);font-weight:900;line-height:1.2;margin:22px 0 18px}
+.hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lead{font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:590px;margin-bottom:34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:15px;padding:15px 28px;border-radius:14px;transition:.22s;cursor:pointer;border:0}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 30px rgba(225,29,46,.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(225,29,46,.45)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid var(--line)}
+.btn-ghost:hover{background:var(--surface2);border-color:transparent}
+.stats{display:flex;gap:38px;margin-top:52px;flex-wrap:wrap}
+.stat b{font-size:30px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.section{padding:90px 0}
+.section-head{text-align:center;max-width:640px;margin:0 auto 52px}
+.section-head .tag{color:var(--accent2);font-weight:800;font-size:13px;letter-spacing:1px}
+.section-head h2{font-size:clamp(26px,4vw,40px);font-weight:900;margin:12px 0 14px}
+.section-head p{color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;transition:.25s}
+.feature:hover{transform:translateY(-6px);border-color:rgba(225,29,46,.4);background:var(--surface2)}
+.feature .ic{width:56px;height:56px;border-radius:14px;background:var(--grad);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
+.feature h3{font-size:19px;font-weight:900;margin-bottom:8px}
+.feature p{color:var(--muted);font-size:14px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 18px;text-align:center;font-weight:800;transition:.22s;font-size:15px}
+.cat:hover{background:var(--grad);transform:translateY(-4px)}
+.cat span{display:block;font-size:26px;margin-bottom:8px}
+.cta-section{background:radial-gradient(circle at 50% 0%,rgba(225,29,46,.16),transparent 55%),var(--surface);border:1px solid var(--line);border-radius:28px;padding:70px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-section h2{font-size:clamp(26px,4vw,40px);font-weight:900;margin-bottom:14px}
+.cta-section p{color:var(--muted);margin-bottom:32px}
+.newsletter{display:flex;gap:12px;max-width:520px;margin:0 auto;flex-wrap:wrap}
+.newsletter input{flex:1;min-width:220px;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:15px 20px;color:#fff;font:inherit;font-size:15px;outline:none;transition:.2s}
+.newsletter input:focus{border-color:var(--accent)}
+.newsletter input::placeholder{color:#777}
+.msg{display:none;margin-top:18px;color:#7CFC9A;font-weight:700}
+.msg.show{display:block}
+footer{border-top:1px solid var(--line);padding:56px 0 28px;background:var(--surface)}
+.footer-main{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+.footer-brand{font-size:22px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-desc{color:var(--muted);font-size:13px;max-width:300px}
+.footer h4{font-size:15px;margin-bottom:16px}
+.footer-links a{display:block;color:var(--muted);font-size:13px;margin:9px 0;transition:.2s}
+.footer-links a:hover{color:#fff}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{width:40px;height:40px;border-radius:12px;background:var(--surface2);border:1px solid var(--line);display:grid;place-items:center;font-weight:900;font-size:13px;transition:.2s}
+.social a:hover{background:var(--grad);border-color:transparent}
+.footer-bottom{border-top:1px solid var(--line);padding-top:24px;text-align:center;color:#777;font-size:12px}
+@media(max-width:900px){.features{grid-template-columns:1fr 1fr}.cats{grid-template-columns:repeat(2,1fr)}.footer-main{grid-template-columns:1fr 1fr}.nav-links a:not(.cta){display:none}}
+@media(max-width:560px){.features,.cats{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr}.stats{gap:26px}.hero{padding:150px 0 80px}}
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="container header-inner">
+    <a class="logo" href="#top"><span class="logo-mark">خ</span><span>الخبر اليوم</span></a>
+    <nav class="nav-links">
+      <a href="#features">لماذا نحن</a>
+      <a href="#categories">الأقسام</a>
+      <a href="#subscribe" class="cta">اشترك الآن</a>
+    </nav>
+  </div>
+</header>
+<main id="top">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-grid">
+      <span class="badge"><span class="dot"></span> ننقل الخبر لحظة بلحظة</span>
+      <h1>منصة الأخبار<br><span class="hl">الرائدة في المنطقة</span></h1>
+      <p class="lead">الخبر اليوم منصة إخبارية رقمية تقدم لك الأخبار والتقارير والتحليلات والفيديوهات على مدار الساعة، بموثوقية وسرعة وبلا أي تعقيد.</p>
+      <div class="hero-actions">
+        <a href="#subscribe" class="btn btn-primary">اشترك في النشرة اليومية</a>
+        <a href="#features" class="btn btn-ghost">اكتشف أكثر</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>+250K</b><span>قارئ شهري</span></div>
+        <div class="stat"><b>24/7</b><span>تغطية مستمرة</span></div>
+        <div class="stat"><b>+40</b><span>قسمًا وملفًا</span></div>
+        <div class="stat"><b>100%</b><span>موضوعية</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">لماذا الخبر اليوم</span>
+        <h2>أخبار تثق بها، في الوقت المناسب</h2>
+        <p>نلتزم بمعايير مهنية صارمة لنقدم لك محتوى دقيقًا وموثوقًا ومواكبًا لكل ما يحدث.</p>
+      </div>
+      <div class="features">
+        <div class="feature"><div class="ic">⚡</div><h3>سرعة في النقل</h3><p>ننقل الخبر فور وقوعه، بأحدث ما يحدث في العالم لحظة بلحظة.</p></div>
+        <div class="feature"><div class="ic">🎯</div><h3>مصداقية عالية</h3><p>فريق تحريري محترف يتحقق من المصادر لضمان دقة كل معلومة.</p></div>
+        <div class="feature"><div class="ic">📊</div><h3>تحليلات معمقة</h3><p>قراءات وتحليلات تشرح خلفيات الأحداث وما وراء الخبر.</p></div>
+        <div class="feature"><div class="ic">🎬</div><h3>فيديو وتقارير</h3><p>محتوى مرئي غني وتقارير ميدانية من قلب الحدث.</p></div>
+        <div class="feature"><div class="ic">📱</div><h3>تجربة مثالية</h3><p>تصميم متجاوب يعمل بسلاسة على جميع الأجهزة والشاشات.</p></div>
+        <div class="feature"><div class="ic">🔔</div><h3>تنبيهات فورية</h3><p>تصلك آخر المستجدات مباشرة عبر النشرة اليومية.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">أقسامنا</span>
+        <h2>كل ما يهمك في مكان واحد</h2>
+        <p>تغطية شاملة لجميع المجالات التي تهم القارئ العربي.</p>
+      </div>
+      <div class="cats">
+        <div class="cat"><span>🌍</span>أخبار العالم</div>
+        <div class="cat"><span>💼</span>الاقتصاد</div>
+        <div class="cat"><span>⚽</span>الرياضة</div>
+        <div class="cat"><span>🎨</span>الثقافة والفن</div>
+        <div class="cat"><span>💻</span>التكنولوجيا</div>
+        <div class="cat"><span>🏥</span>الصحة</div>
+        <div class="cat"><span>💬</span>الرأي</div>
+        <div class="cat"><span>🎬</span>الفيديو</div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="subscribe">
+    <div class="container">
+      <div class="cta-section">
+        <h2>اشترك في النشرة اليومية</h2>
+        <p>كن أول من يعرف. تصلك أهم الأخبار والتقارير على بريدك كل صباح — مجانًا.</p>
+        <form class="newsletter" id="newsletterForm" onsubmit="return handleSubmit(event)">
+          <input type="email" id="emailInput" placeholder="بريدك الإلكتروني" required>
+          <button type="submit" class="btn btn-primary">اشترك مجانًا</button>
+        </form>
+        <div class="msg" id="msg">✓ تم الاشتراك بنجاح! مرحبًا بك في الخبر اليوم.</div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand"><span class="logo-mark" style="width:36px;height:36px;font-size:17px">خ</span> الخبر اليوم</div>
+        <p class="footer-desc">منصة إخبارية رقمية تقدم الأخبار والتقارير والتحليلات والفيديوهات على مدار الساعة.</p>
+        <div class="social"><a href="#" aria-label="فيسبوك">ف</a><a href="#" aria-label="إكس">X</a><a href="#" aria-label="يوتيوب">ي</a><a href="#" aria-label="إنستغرام">ان</a></div>
+      </div>
+      <div class="footer-links"><h4>الشركة</h4><a href="#">من نحن</a><a href="#">تواصل معنا</a><a href="#">الوظائف</a><a href="#">سياسة الخصوصية</a></div>
+      <div class="footer-links"><h4>الأقسام</h4><a href="#">أخبار</a><a href="#">اقتصاد</a><a href="#">رياضة</a><a href="#">فيديو</a></div>
+      <div class="footer-links"><h4>الدعم</h4><a href="#">الأسئلة الشائعة</a><a href="#">الشروط والأحكام</a><a href="#">الإعلان معنا</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 الخبر اليوم — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+<script>
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>20);});
+function handleSubmit(e){e.preventDefault();const email=document.getElementById('emailInput').value.trim();if(email){document.getElementById('msg').classList.add('show');document.getElementById('newsletterForm').reset();setTimeout(()=>document.getElementById('msg').classList.remove('show'),4000);}return false;}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const id=this.getAttribute('href');const el=id&&document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});}});});
+</script>
+</body>
+</html>

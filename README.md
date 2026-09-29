@@ -1,2 +1,21 @@
-# al-khabar-live
-صفحة هبوط لقناة الخبر اليوم — تُشغَّل عبر GitHub Actions + Serveo tunnel
+# الخبر اليوم — Live Site
+
+صفحة هبوط لقناة "الخبر اليوم"، تُشغَّل كموقع مباشر عبر **GitHub Actions + Serveo tunnel**.
+
+## التشغيل
+
+1. من تبويب **Actions**، شغّل `live-site` (Run workflow).
+2. افتح الـ run وشوف الـ log تلقى الرابط:
+
+```
+LIVE SITE CONNECTION INFO
+URL : http://xxxx.serveo.net
+```
+
+افتح الرابط في المتصفح.
+
+## ملاحظات
+
+- الرابط **مؤقت** (يحيا بينما الـ job خدّام، ~6 ساعات) وكيتبدل كل تشغيل.
+- مناسب للعرض والاختبار، ماشي للاستضافة الدائمة.
+- للاستضافة الدائمة استعمل GitHub Pages.
